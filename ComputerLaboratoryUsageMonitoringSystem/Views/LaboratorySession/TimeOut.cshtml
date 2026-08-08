@@ -1,0 +1,15 @@
+@model LaboratorySession
+@{
+    ViewData["Title"] = "Record Time Out";
+}
+
+<h2>Record Time Out</h2>
+<div class="alert alert-warning">
+    Record time out for <strong>@Model.FirstName @Model.LastName</strong>
+    using computer <strong>@Model.ComputerNumber</strong>?
+</div>
+<form asp-action="TimeOutConfirmed" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button class="btn btn-success" type="submit">Confirm Time Out</button>
+    <a class="btn btn-secondary" asp-action="Index">Cancel</a>
+</form>
