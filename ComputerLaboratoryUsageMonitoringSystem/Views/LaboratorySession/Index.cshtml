@@ -1,0 +1,60 @@
+@model List<LaboratorySession>
+@{
+    ViewData["Title"] = "Monitoring";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Laboratory Monitoring</h2>
+    <a class="btn btn-primary" asp-action="Create">Register Session</a>
+</div>
+
+<form method="get" class="row g-2 mb-3">
+    <div class="col-md-5">
+        <input class="form-control" type="text" name="search" value="@ViewBag.Search" placeholder="Search student, computer, or status" />
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-secondary" type="submit">Search</button>
+        <a class="btn btn-outline-secondary" asp-action="Index">Clear</a>
+    </div>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped align-middle">
+        <thead class="table-primary">
+            <tr>
+                <th>Session Number</th>
+                <th>Student</th>
+                <th>Computer</th>
+                <th>Time In</th>
+                <th>Time Out</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count == 0)
+            {
+                <tr><td colspan="7" class="text-center">No laboratory sessions found.</td></tr>
+            }
+            @foreach (LaboratorySession session in Model)
+            {
+                <tr>
+                    <td>@session.SessionNumber</td>
+                    <td>@session.StudentNumber - @session.FirstName @session.LastName</td>
+                    <td>@session.ComputerNumber</td>
+                    <td>@session.TimeIn.ToString("MMM dd, yyyy hh:mm tt")</td>
+                    <td>@(session.TimeOut?.ToString("MMM dd, yyyy hh:mm tt") ?? "-")</td>
+                    <td>@session.Status</td>
+                    <td>
+                        <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@session.Id">Details</a>
+                        <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@session.Id">Edit</a>
+                        @if (session.Status == "Using")
+                        {
+                            <a class="btn btn-sm btn-success" asp-action="TimeOut" asp-route-id="@session.Id">Time Out</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
