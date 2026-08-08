@@ -1,0 +1,45 @@
+@model LaboratorySession
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label asp-for="StudentNumber" class="form-label"></label>
+        <input asp-for="StudentNumber" class="form-control" />
+        <span asp-validation-for="StudentNumber" class="text-danger"></span>
+    </div>
+    <div class="col-md-6 mb-3">
+        <label asp-for="ComputerNumber" class="form-label"></label>
+        <input asp-for="ComputerNumber" class="form-control" />
+        <span asp-validation-for="ComputerNumber" class="text-danger"></span>
+    </div>
+    <div class="col-md-6 mb-3">
+        <label asp-for="FirstName" class="form-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="col-md-6 mb-3">
+        <label asp-for="LastName" class="form-label"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="col-md-6 mb-3">
+        <label asp-for="Course" class="form-label"></label>
+        <input asp-for="Course" class="form-control" />
+        <span asp-validation-for="Course" class="text-danger"></span>
+    </div>
+    <div class="col-md-6 mb-3">
+        <label asp-for="YearLevel" class="form-label"></label>
+        <input asp-for="YearLevel" class="form-control" />
+        <span asp-validation-for="YearLevel" class="text-danger"></span>
+    </div>
+    <div class="col-12 mb-3">
+        <label asp-for="Purpose" class="form-label"></label>
+        <input asp-for="Purpose" class="form-control" />
+        <span asp-validation-for="Purpose" class="text-danger"></span>
+    </div>
+    <div class="col-12 mb-3">
+        <label asp-for="Notes" class="form-label"></label>
+        <textarea asp-for="Notes" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Notes" class="text-danger"></span>
+    </div>
+</div>
